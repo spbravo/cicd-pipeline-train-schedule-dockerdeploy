@@ -43,7 +43,7 @@ pipeline {
                 milestone(1)
                 withCredentials([usernamePassword(credentialsId: 'Jenkins_node', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     script {
-                        sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@54.72.102.57 \"docker pull spbravo/trains-schedule:${env.BUILD_NUMBER}\""
+                        sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@54.72.102.57 \"docker pull spbravo/train-schedule:${env.BUILD_NUMBER}\""
                         try {
                             sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@54.72.102.57 \"docker stop train-schedule\""
                             sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@54.72.102.57 \"docker rm train-schedule\""
